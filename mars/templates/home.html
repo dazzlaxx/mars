@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Главная страница</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Добро пожаловать на главную страницу!</h1>
+            {% if current_user.is_authenticated %}
+                <p>Привет, {{ current_user.username }}!</p>
+                <a href="{{ url_for('logout') }}">Выход</a>
+            {% else %}
+                <a href="{{ url_for('login') }}">Вход</a>
+                <a href="{{ url_for('register') }}">Регистрация</a>
+            {% endif %}
+        </header>
+        <main>
+            <h2>Информация о проекте</h2>
+            <p>Здесь вы можете узнать больше о нашей программе для астронавтов.</p>
+            <div class="image-container">
+                <img src="{{ url_for('static', filename='images/mars.jpg') }}" alt="Марс">
+            </div>
+            <p>Марс — четвертая планета от Солнца и вторая по размерам планета земной группы. Он известен своими красными оттенками и является объектом интереса для изучения и возможной колонизации.</p>
+            <a href="{{ url_for('application_form') }}">Заполнить анкету</a>
+            <a href="{{ url_for('simulators') }}">Посмотреть симуляторы</a>
+        </main>
+        <footer>
+            <p>&copy; 2025 Проект Астронавта. Все права защищены.</p>
+        </footer>
+    </div>
+</body>
+</html>

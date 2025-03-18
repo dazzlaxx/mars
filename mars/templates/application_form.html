@@ -1,0 +1,92 @@
+{% extends "base.html" %}
+
+{% block title %}Анкета Астронавта{% endblock %}
+
+{% block content %}
+<h2>Анкета Астронавта</h2>
+<form method="POST">
+    {{ form.hidden_tag() }}
+
+    <h3>Личная информация</h3>
+    <p>
+        {{ form.name.label }}<br>
+        {{ form.name(size=32) }}<br>
+        {% for error in form.name.errors %}
+            <span class="error">{{ error }}</span>
+        {% endfor %}
+    </p>
+    <p>
+        {{ form.surname.label }}<br>
+        {{ form.surname(size=32) }}<br>
+        {% for error in form.surname.errors %}
+            <span class="error">{{ error }}</span>
+        {% endfor %}
+    </p>
+    <p>
+        {{ form.age.label }}<br>
+        {{ form.age(size=5) }}<br>
+        {% for error in form.age.errors %}
+            <span class="error">{{ error }}</span>
+        {% endfor %}
+    </p>
+    <p>
+        {{ form.nationality.label }}<br>
+        {{ form.nationality(size=32) }}<br>
+        {% for error in form.nationality.errors %}
+            <span class="error">{{ error }}</span>
+        {% endfor %}
+    </p>
+
+    <h3>Образование</h3>
+    <p>
+        {{ form.education.label }}<br>
+        {{ form.education(size=32) }}<br>
+        {% for error in form.education.errors %}
+            <span class="error">{{ error }}</span>
+        {% endfor %}
+    </p>
+    <p>
+        {{ form.university.label }}<br>
+        {{ form.university(size=32) }}<br>
+        {% for error in form.university.errors %}
+            <span class="error">{{ error }}</span>
+        {% endfor %}
+    </p>
+
+    <h3>Опыт работы</h3>
+    <p>
+        {{ form.experience.label }}<br>
+        {{ form.experience(rows=5, cols=32) }}<br>
+        {% for error in form.experience.errors %}
+            <span class="error">{{ error }}</span>
+        {% endfor %}
+    </p>
+
+    <h3>Навыки и квалификации</h3>
+    <p>
+        {{ form.skills.label }}<br>
+        {{ form.skills(size=32) }}<br>
+        {% for error in form.skills.errors %}
+            <span class="error">{{ error }}</span>
+        {% endfor %}
+    </p>
+    <p>
+        {{ form.certifications.label }}<br>
+        {{ form.certifications(size=32) }}<br>
+        {% for error in form.certifications.errors %}
+            <span class="error">{{ error }}</span>
+        {% endfor %}
+    </p>
+
+    <h3>Дополнительная информация</h3>
+    <p>
+        {{ form.motivation.label }}<br>
+        {{ form.motivation(rows=5, cols=32) }}<br>
+        {% for error in form.motivation.errors %}
+            <span class="error">{{ error }}</span>
+        {% endfor %}
+    </p>
+
+    <p>{{ form.submit() }}</p>
+</form>
+{% endblock %}
