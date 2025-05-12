@@ -10,7 +10,6 @@ app.config['SECRET_KEY'] = 'your_secret_key'
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///site.db'
 db.init_app(app)
 
-
 login_manager = LoginManager()
 login_manager.init_app(app)
 login_manager.login_view = 'login'
@@ -42,9 +41,10 @@ def login():
         user = User.query.filter_by(email=form.email.data).first()
         if user and user.check_password(form.password.data):
             login_user(user)
+            flash('Вход выполнен успешно!', 'success')
             return redirect(url_for('application_form'))
         else:
-            flash('Login Unsuccessful. Please check email and password', 'danger')
+            flash('Неверный email или пароль', 'danger')
     return render_template('login.html', form=form)
 
 @app.route('/application', methods=['GET', 'POST'])
@@ -85,6 +85,7 @@ def cabin_distribution():
 @login_required
 def logout():
     logout_user()
+    flash('You have been logged out.', 'info')  # Уведомление об успешном выходе
     return redirect(url_for('home'))
 
 if __name__ == '__main__':
