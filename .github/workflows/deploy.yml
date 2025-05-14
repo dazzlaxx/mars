@@ -1,31 +1,37 @@
-name: Deploy to Heroku
+# .github/workflows/deploy.yml
+name: Self-Hosted Deployment
 
 on:
   push:
-    branches: [ main ]
+    branches: [main]
+  workflow_dispatch:
 
 jobs:
   deploy:
     runs-on: ubuntu-latest
+    
     steps:
-      - uses: actions/checkout@v3
+      - name: Checkout code
+        uses: actions/checkout@v3
 
-      - name: Set up Heroku CLI
-        run: |
-          curl https://cli-assets.heroku.com/install.sh | sh
+      - name: Set up Python
+        uses: actions/setup-python@v3
+        with:
+          python-version: '3.10'
 
-      - name: Login to Heroku
-        env:
-          HEROKU_API_KEY: ${{ secrets.HEROKU_API_KEY }}
-          HEROKU_EMAIL: ${{ secrets.HEROKU_EMAIL }}
+      - name: Install dependencies
         run: |
-          heroku login -i <<< "$HEROKU_EMAIL"
-          heroku container:login
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
 
-      - name: Deploy to Heroku
-        env:
-          HEROKU_API_KEY: ${{ secrets.HEROKU_API_KEY }}
-          HEROKU_APP_NAME: ${{ secrets.HEROKU_APP_NAME }}
+      - name: Run database migrations
         run: |
-          heroku container:push web -a $HEROKU_APP_NAME
-          heroku container:release web -a $HEROKU_APP_NAME
+          python manage.py migrate
+
+      - name: Collect static files
+        run: |
+          python manage.py collectstatic --noinput
+
+      - name: Start application
+        run: |
+          nohup python manage.py runserver 0.0.0.0:8000 &
