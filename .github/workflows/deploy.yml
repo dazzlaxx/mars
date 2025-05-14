@@ -1,5 +1,4 @@
-# .github/workflows/deploy.yml
-name: Self-Hosted Deployment
+name: Flask Application Deployment
 
 on:
   push:
@@ -9,7 +8,7 @@ on:
 jobs:
   deploy:
     runs-on: ubuntu-latest
-    
+
     steps:
       - name: Checkout code
         uses: actions/checkout@v3
@@ -24,14 +23,14 @@ jobs:
           python -m pip install --upgrade pip
           pip install -r requirements.txt
 
-      - name: Run database migrations
+      - name: Run Flask migrations (if using Flask-Migrate)
         run: |
-          python manage.py migrate
+          if [ -f "migrations" ]; then
+            flask db upgrade
+          else
+            echo "No migrations found"
+          fi
 
-      - name: Collect static files
+      - name: Start Flask application
         run: |
-          python manage.py collectstatic --noinput
-
-      - name: Start application
-        run: |
-          nohup python manage.py runserver 0.0.0.0:8000 &
+          nohup flask run --host=0.0.0.0 --port=8000 > server.log 2>&1 &
