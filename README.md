@@ -1,18 +1,8 @@
-# Flask Application CI/CD
-
-![Tests](https://github.com/yourusername/mars/actions/workflows/test.yml/badge.svg)
-![Build](https://github.com/yourusername/mars/actions/workflows/build.yml/badge.svg)
-![Deploy](https://github.com/yourusername/mars/actions/workflows/deploy.yml/badge.svg)
-
-## CI/CD Pipeline
-
-This project uses GitHub Actions for continuous integration and deployment:
-
-1. **Tests**: Runs pytest with coverage on every push/pull request
-2. **Build**: Checks code quality with flake8 and formatting with black
-3. **Deploy**: Automatically deploys to Heroku when pushing to main branch
-
 # Веб-приложение для отбора астронавтов для колонизации Марса
+
+| Тестирование | ![Тесты](https://github.com/<dazzlaxx>/<mars>/actions/workflows/test.yml/badge.svg) |
+| Сборка     | ![Сборка](https://github.com/<dazzlaxx>/<mars>/actions/workflows/build.yml/badge.svg) |
+| Деплой     | ![Деплой](https://github.com/<dazzlaxx>/<mars>/actions/workflows/deploy.yml/badge.svg) |
 
 ## Цель проекта
 Разработка веб-приложения для отбора астронавтов для колонизации Марса, включающего анкету для соискателей, страницу определения людей на тренировочные симуляторы и страницу распределения астронавтов по каютам корабля. Приложение должно автоматизировать процесс подачи заявок, отбора и подготовки астронавтов к миссии.
