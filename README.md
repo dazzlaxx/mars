@@ -1,9 +1,8 @@
 # Веб-приложение для отбора астронавтов для колонизации Марса
 
-| Тестирование | ![Тесты](https://github.com/<dazzlaxx>/<mars>/actions/workflows/test.yml/badge.svg) |
-| Сборка     | ![Сборка](https://github.com/<dazzlaxx>/<mars>/actions/workflows/build.yml/badge.svg) |
-| Деплой     | ![Деплой](https://github.com/<dazzlaxx>/<mars>/actions/workflows/deploy.yml/badge.svg) |
-
+[![Тесты](https://github.com/<dazzlaxx>/<mars>/actions/workflows/test.yml/badge.svg)](https://github.com/<USERNAME>/<REPO>/actions/workflows/test.yml)
+[![Сборка](https://github.com/<dazzlaxx>/<mars>/actions/workflows/build.yml/badge.svg)](https://github.com/<USERNAME>/<REPO>/actions/workflows/build.yml)
+[![Деплой](https://github.com/<dazzlaxx>/<mars>/actions/workflows/deploy.yml/badge.svg)](https://github.com/<USERNAME>/<REPO>/actions/workflows/deploy.yml)
 ## Цель проекта
 Разработка веб-приложения для отбора астронавтов для колонизации Марса, включающего анкету для соискателей, страницу определения людей на тренировочные симуляторы и страницу распределения астронавтов по каютам корабля. Приложение должно автоматизировать процесс подачи заявок, отбора и подготовки астронавтов к миссии.
 
