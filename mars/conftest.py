@@ -6,9 +6,9 @@ from models import User
 
 @pytest.fixture
 def client():
-    app.config['TESTING'] = True
-    app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///:memory:'
-    app.config['WTF_CSRF_ENABLED'] = False  # Отключаем CSRF для тестов
+    app.config["TESTING"] = True
+    app.config["SQLALCHEMY_DATABASE_URI"] = "sqlite:///:memory:"
+    app.config["WTF_CSRF_ENABLED"] = False  # Отключаем CSRF для тестов
 
     with app.test_client() as client:
         with app.app_context():
@@ -21,8 +21,8 @@ def client():
 @pytest.fixture
 def test_user():
     with app.app_context():
-        user = User(username='testuser', email='test@example.com')
-        user.set_password('testpassword')
+        user = User(username="testuser", email="test@example.com")
+        user.set_password("testpassword")
         db.session.add(user)
         db.session.commit()
         return user
